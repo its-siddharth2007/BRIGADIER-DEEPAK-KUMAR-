@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brigadier Deepak Kumar | Strategic Leadership Portfolio</title>
+    <style>
+        /* --- DESIGN SYSTEM & GRAPHICS --- */
+        :root {
+            --bg-main: #0a0f1d;        /* Deep Space / Tactical Navy Black */
+            --bg-surface: #111827;     /* Dark Charcoal-Navy */
+            --bg-glass: rgba(17, 24, 39, 0.7);
+            --accent-gold: #e5c158;    /* Muted Metallic Gold */
+            --accent-glow: rgba(229, 193, 88, 0.15);
+            --text-primary: #ffffff;   /* High Contrast White */
+            --text-secondary: #9ca3af; /* Cool Gray */
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(229, 193, 88, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- BACKGROUND DECORATIVE GRID --- */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* --- STICKY NAVIGATION --- */
+        header {
+            background-color: rgba(10, 15, 29, 0.8);
+            border-bottom: 1px solid var(--border-color);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-primary);
+        }
+
+        .logo span {
+            color: var(--accent-gold);
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* --- REACTIVE HERO SPLIT SECTION --- */
+        .hero-section {
+            padding: 9rem 2rem 5rem 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1.9fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 340px;
+            justify-self: center;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            transition: transform 0.5s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-image-container:hover .profile-img {
+            transform: scale(1.02) translateY(-4px);
+        }
+
+        .hero-image-container::after {
+            content: '';
+            position: absolute;
+            top: -10px; left: -10px; right: -10px; bottom: -10px;
+            background: linear-gradient(135deg, transparent, var(--accent-gold), transparent);
+            opacity: 0.2;
+            filter: blur(20px);
+            z-index: 1;
+            border-radius: 16px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+            margin-bottom: 0.4rem;
+            background: linear-gradient(180deg, #ffffff 50%, #a3a3a3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content .rank {
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero-content .rank::after {
+            content: '';
+            height: 1px;
+            width: 50px;
+            background-color: var(--accent-gold);
+        }
+
+        .hero-content .motto {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            background: rgba(229, 193, 88, 0.08);
+            border: 1px solid rgba(229, 193, 88, 0.2);
+            border-radius: 4px;
+        }
+
+        .hero-content .bio {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            margin-bottom: 2.5rem;
+            max-width: 750px;
+            text-align: justify;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #f3d47a 0%, #d4af37 100%);
+            color: #05070f;
+            padding: 0.9rem 2.2rem;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 20px var(--accent-glow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(229, 193, 88, 0.4);
+        }
+
+        /* --- DATA HIGHLIGHT TICKER --- */
+        .stats-strip {
+            background: linear-gradient(90deg, var(--bg-surface) 0%, #161f32 100%);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 3rem 2rem;
+        }
+
+        .stats-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item .num {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #ffffff 30%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-item .label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* --- LAYOUT WRAPPERS & TITLES --- */
+        section {
+            padding: 7rem 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 4.5rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .section-line {
+            flex-grow: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--border-color) 0%, transparent 100%);
+        }
+
+        /* --- INTERACTIVE SKILLS SECTION --- */
+        .skills-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 0.6rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+            background: rgba(229, 193, 88, 0.05);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-node {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 6px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .skill-node:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 10px 25px rgba(229, 193, 88, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .skill-node h3 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .skill-node p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* --- MODERN TIMELINE --- */
+        .timeline-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .timeline-card {
+            background-color: var(--bg-glass);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 2rem;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .timeline-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transform: translateX(4px);
+        }
+
+        .timeline-period {
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-details h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-details .org {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        .timeline-details p {
+            margin-top: 0.8rem;
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* --- TWO COLUMN RESPONSIVE GRID --- */
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+        }
+
+        .list-block {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .list-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            padding: 1.2rem 1.5rem;
+            border-radius: 6px;
+            transition: border-color 0.3s;
+        }
+
+        .list-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .list-card .title {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 1.05rem;
+        }
+
+        .list-card .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        .sub-heading {
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        /* --- FOOTER & CONTACT PLACEMENT --- */
+        footer {
+            background-color: var(--bg-surface);
+            border-top: 1px solid var(--border-color);
+            padding: 6rem 2rem 3rem 2rem;
+            text-align: center;
+        }
+
+        .contact-wrapper h2 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-wrapper p {
+            color: var(--text-secondary);
+            max-width: 550px;
+            margin: 0 auto 2.5rem auto;
+            font-size: 1.05rem;
+        }
+
+        .contact-channels {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 4.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-channels a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-bottom: 1px solid var(--accent-gold);
+            padding-bottom: 4px;
+            transition: all 0.3s;
+        }
+
+        .contact-channels a:hover {
+            color: var(--accent-gold);
+            border-color: transparent;
+        }
+
+        .footer-cr {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        /* --- REACTIVE MEDIA QUERIES --- */
+        @media (max-width: 1024px) {
+            .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .split-grid { grid-template-columns: 1fr; gap: 4rem; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container { flex-direction: column; gap: 1.2rem; text-align: center; }
+            .nav-links { gap: 1.2rem; flex-wrap: wrap; justify-content: center; }
+            .hero-content h1 { font-size: 2.4rem; }
+            .timeline-card { grid-template-columns: 1fr; gap: 0.5rem; }
+            .section-header { margin-bottom: 2.5rem; }
+            section { padding: 4rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">BRIGADIER DEEPAK <span>KUMAR</span></div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Timeline</a></li>
+                <li><a href="#credentials">Credentials</a></li>
+                <li><a href="#connect">Connect</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section id="about" class="hero-section">
+        <div class="hero-grid">
+            <div class="hero-image-container">
+                <img src="profile.jpg" alt="Brigadier Deepak Kumar" class="profile-img">
+            </div>
+            <div class="hero-content">
+                <h1>BRIGADIER DEEPAK KUMAR</h1>
+                <div class="rank">Strategic Leader</div>
+                <div class="motto">Motto: Pride in Professionalism</div>
+                <p class="bio">
+                    Strategic financial leader with expertise in technology management and project leadership. Skilled in strategic planning, policy formulation, and public finance, managing substantial budgets and large teams. Specializes in procurement and project management, driving the development of technology and innovation hubs in UAS, CUAS, robotics, and AI.
+                </p>
+                <a href="#connect" class="btn">Initiate Engagement</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="stats-strip">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="num">₹ 4,500 Cr</div>
+                <div class="label">Macro Budget Handled</div>
+            </div>
+            <div class="stat-item">
+                <div class="num">5 Times</div>
+                <div class="label">Decorated for Excellence</div>
+            </div>
+            <div class="stat-item">
+                <div class="num">4 Volumes</div>
+                <div class="label">Published Books</div>
+            </div>
+        </div>
+    </div>
+
+    <section id="skills">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Core Competencies</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="skills-tabs">
+                <button class="tab-btn active" onclick="filterSkills('all')">All Skills</button>
+                <button class="tab-btn" onclick="filterSkills('strategic')">Strategic & Leadership</button>
+                <button class="tab-btn" onclick="filterSkills('technical')">Technical Engineering</button>
+                <button class="tab-btn" onclick="filterSkills('financial')">Financial Mastery</button>
+                <button class="tab-btn" onclick="filterSkills('logistics')">Logistics & Supply Chain</button>
+            </div>
+
+            <div class="skills-grid" id="skillsContainer">
+                <div class="skill-node" data-category="strategic">
+                    <h3>Strategic Planning & Formulation</h3>
+                    <p>Formulating high-level organizational blueprints and national defense asset protection policies.</p>
+                </div>
+                <div class="skill-node" data-category="strategic">
+                    <h3>Cross-Functional Leadership</h3>
+                    <p>Managing extensive multidisciplinary teams across command lines and high-stakes operating matrices.</p>
+                </div>
+                <div class="skill-node" data-category="strategic">
+                    <h3>Risk Management & Regulatory Compliance</h3>
+                    <p>Assessing institutional vulnerability and managing strict compliance matrices for audit readiness.</p>
+                </div>
+
+                <div class="skill-node" data-category="technical">
+                    <h3>Radar & Missile Weapon Systems Mastery</h3>
+                    <p>Sustainment strategy, material lifecycle workflows, and fleet technical readiness optimization.</p>
+                </div>
+                <div class="skill-node" data-category="technical">
+                    <h3>High-Tech Integration (AI, UAS, CUAS, Robotics)</h3>
+                    <p>Driving state-of-the-art innovation programs, tech incubation hubs, and drone mitigation architectures.</p>
+                </div>
+                <div class="skill-node" data-category="technical">
+                    <h3>Equipment Maintenance & Obsolescence Policy</h3>
+                    <p>System structural alignment to counteract tech aging factors and secure sustained operating metrics.</p>
+                </div>
+
+                <div class="skill-node" data-category="financial">
+                    <h3>Public Finance Management</h3>
+                    <p>Overseeing multi-crore operational budgets, fiscal monitoring layouts, and resource allocation mapping.</p>
+                </div>
+                <div class="skill-node" data-category="financial">
+                    <h3>Defense Public Procurement</h3>
+                    <p>Executing large procurement loops, managing commercial acquisition contracts, and compliance oversight.</p>
+                </div>
+                <div class="skill-node" data-category="financial">
+                    <h3>Contract Compliance & Arbitrations</h3>
+                    <p>Structuring vendor engagement agreements, checking compliance standards, and managing settlement paths.</p>
+                </div>
+
+                <div class="skill-node" data-category="logistics">
+                    <h3>Supply Chain Optimization</h3>
+                    <p>Designing sophisticated multi-tier spares planning models and metrics for complex material logistics.</p>
+                </div>
+                <div class="skill-node" data-category="logistics">
+                    <h3>ERP Implementation & Logistics Automation</h3>
+                    <p>Deploying large systems to fully automate sustainment procedures, inventory pipelines, and delivery schedules.</p>
+                </div>
+                <div class="skill-node" data-category="logistics">
+                    <h3>Vendor Performance & Alignment Oversight</h3>
+                    <p>Enforcing rigorous performance criteria to ensure supply path reliability and mitigation of operational gaps.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Command & Executive History</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="timeline-container">
+                
+                <div class="timeline-card">
+                    <div class="timeline-period">12 Aug 2025 — Present</div>
+                    <div class="timeline-details">
+                        <h3>Head Sustainment for Armament Electronics, IT and Automation</h3>
+                        <div class="org">Apex Level</div>
+                    </div>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="timeline-period">01 May 2023 — 11 Aug 2025</div>
+                    <div class="timeline-details">
+                        <h3>Head Engineering and Sustainment</h3>
+                        <div class="org">Operational Formation</div>
+                    </div>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="timeline-period">29 Jun 2020 — 30 Apr 2023</div>
+                    <div class="timeline-details">
+                        <h3>HoD Finance and SCM</h3>
+                        <div class="org">College of Defence Management, Secunderabad</div>
+                    </div>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="timeline-period">01 Apr 2018 — 28 Jun 2020</div>
+                    <div class="timeline-details">
+                        <h3>Head Finance and Procurement</h3>
+                        <div class="org">Northern Command</div>
+                        <p>Directed extensive procurement workflows alongside long-term resource optimization policies.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="timeline-period">25 Sep 2015 — 23 May 2017</div>
+                    <div class="timeline-details">
+                        <h3>Commanding Officer (CEO)</h3>
+                        <div class="org">New Raising Unit in North East</div>
+                    </div>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="timeline-period">02 Dec 2013 — 24 Sep 2015</div>
+                    <div class="timeline-details">
+                        <h3>Commanding Officer (CEO)</h3>
+                        <div class="org">High Tech Unit</div>
+                    </div>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="timeline-period">Jun 2010 — Oct 2012</div>
+                    <div class="timeline-details">
+                        <h3>Instructor Radar and Missile Systems</h3>
+                        <div class="org">MCEME</div>
+                    </div>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="timeline-period">Aug 2007 — Jun 2010</div>
+                    <div class="timeline-details">
+                        <h3>Joint Director</h3>
+                        <div class="org">Apex Level</div>
+                        <p>Policy making across induction guidelines, material engineering metrics, and fleet lifecycle longevity layout protocols.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="timeline-period">Feb 2005 — Aug 2007</div>
+                    <div class="timeline-details">
+                        <h3>Head Missile Workshop Unit</h3>
+                        <div class="org">Military Unit</div>
+                    </div>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="timeline-period">Apr 2002 — Feb 2004</div>
+                    <div class="timeline-details">
+                        <h3>Head Air Defence Workshop</h3>
+                        <div class="org">Military Unit</div>
+                    </div>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="timeline-period">Jan 1998 — Apr 1999</div>
+                    <div class="timeline-details">
+                        <h3>Lead Sustainment for Guns and Radars</h3>
+                        <div class="org">Military Assignment</div>
+                    </div>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="timeline-period">Dec 1995 — Jul 1997</div>
+                    <div class="timeline-details">
+                        <h3>Combat Attachment in Infantry</h3>
+                        <div class="org">Jammu & Kashmir</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="credentials">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Credentials & Accreditations</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="split-grid">
+                <div>
+                    <div class="sub-heading">Academic Portfolio</div>
+                    <div class="list-block">
+                        <div class="list-card">
+                            <div class="title">M Phil</div>
+                            <div class="subtitle">Osmania University, 2023</div>
+                        </div>
+                        <div class="list-card">
+                            <div class="title">MDP on Contracts & Arbitrations</div>
+                            <div class="subtitle">IIM Kolkata, 2023</div>
+                        </div>
+                        <div class="list-card">
+                            <div class="title">MDP Decision Making in Finance</div>
+                            <div class="subtitle">IIM Bangalore, 2021</div>
+                        </div>
+                        <div class="list-card">
+                            <div class="title">MMS</div>
+                            <div class="subtitle">Osmania University, 2018</div>
+                        </div>
+                        <div class="list-card">
+                            <div class="title">M.Tech (Electronics)</div>
+                            <div class="subtitle">Jawaharlal Nehru University, 2015</div>
+                        </div>
+                        <div class="list-card">
+                            <div class="title">B.Tech (Electronics)</div>
+                            <div class="subtitle">Jawaharlal Nehru University, 2002</div>
+                        </div>
+                        <div class="list-card">
+                            <div class="title">B.Sc (Hons) Biochemistry</div>
+                            <div class="subtitle">Delhi University, 1994</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="sub-heading">Distinctions & Affiliations</div>
+                    <div class="list-block">
+                        <div class="list-card">
+                            <div class="title">Military Commendations</div>
+                            <div class="subtitle">Formally commended 5 times for meritorious and outstanding institutional service.</div>
+                        </div>
+                        <div class="list-card">
+                            <div class="title">IPMA Level ‘B’ Certified Professional</div>
+                            <div class="subtitle">Certified Senior Project Manager credentialing standard.</div>
+                        </div>
+                        <div class="list-card">
+                            <div class="title">Published Expert & Author</div>
+                            <div class="subtitle">Authored 3 publications mapping out defense public finance and 1 comprehensive historical lineage textbook.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="connect">
+        <div class="contact-wrapper">
+            <h2>CONNECT PROFESSIONALLY</h2>
+            <p>Open for executive consultation, technology advisory pipelines, defense frameworking, or advisory council placement.</p>
+            <div class="contact-channels">
+                <a href="mailto:deepak2207@gmail.com">deepak2207@gmail.com</a>
+                <a href="tel:+919564845659">+91 95648 45659</a>
+            </div>
+        </div>
+        <div class="footer-cr">&copy; 2026 BRIGADIER DEEPAK KUMAR. ALL RIGHTS RESERVED.</div>
+    </footer>
+
+    <script>
+        function filterSkills(category) {
+            // Update Active Tab Styles
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Filter Logic
+            const cards = document.querySelectorAll('.skill-node');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                    setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'scale(1)'; }, 10);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.95)';
+                    setTimeout(() => { card.style.display = 'none'; }, 300);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
